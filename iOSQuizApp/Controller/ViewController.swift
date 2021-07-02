@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     @objc func setupUI() {
         self.questionLabel.text = self.quizLogic.showQuestion()
         self.progressView.progress = self.quizLogic.updatePogressBar()
+        self.scoreLabel.text = "Score \(self.quizLogic.getScore())"
         self.trueButton.backgroundColor = .clear
         self.falseButton.backgroundColor = .clear
     }

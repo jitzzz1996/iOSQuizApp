@@ -21,9 +21,11 @@ struct QuizLogic {
         QuestionsModel(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")]
     
     var questionNumber = 0
+    var score = 0
     
-    func checkAnswer(answer: String) -> Bool {
+    mutating func checkAnswer(answer: String) -> Bool {
         if questionsModel[questionNumber].answer == answer {
+            self.score += 1
            return true
         } else {
             return false
@@ -35,6 +37,7 @@ struct QuizLogic {
             self.questionNumber += 1
         } else {
             self.questionNumber = 0
+            self.score = 0
         }
     }
     
@@ -45,5 +48,8 @@ struct QuizLogic {
     func updatePogressBar() -> Float {
         return Float(questionNumber + 1) / Float(questionsModel.count)
     }
-
+    
+    func getScore() -> Int {
+        return score
+    }
 }
