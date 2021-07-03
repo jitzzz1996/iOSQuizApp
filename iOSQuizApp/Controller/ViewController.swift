@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var secondButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
@@ -35,10 +36,15 @@ class ViewController: UIViewController {
     }
     @objc func setupUI() {
         self.questionLabel.text = self.quizLogic.showQuestion()
+        let options = self.quizLogic.setOptions()
+        self.trueButton.setTitle(options[0], for: .normal)
+        self.secondButton.setTitle(options[1], for: .normal)
+        self.falseButton.setTitle(options[2], for: .normal)
         self.progressView.progress = self.quizLogic.updatePogressBar()
         self.scoreLabel.text = "Score \(self.quizLogic.getScore())"
         self.trueButton.backgroundColor = .clear
         self.falseButton.backgroundColor = .clear
+        self.secondButton.backgroundColor = .clear
     }
 }
 
